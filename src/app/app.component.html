@@ -1,3 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<admin-app></admin-app>
+<div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <a class="navbar-brand">ContactListSystem</a>
+        <ul class="nav navbar-nav">
+          <li><a [routerLink]= "['/admin']">Admin</a></li>
+          <li><a [routerLink]= "['/user']">User</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div>
+        <router-outlet></router-outlet>
+      </div> 
+  </div>
 
