@@ -3,8 +3,19 @@
     <head>
     </head>
     <body>
-        <div>
-            <h1>This works </h1>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1>Admin Login</h1>
+            </div>
+            <div class="panel-body">
+                <form #form = "ngForm" novalidate>
+                    <label for="Fname">First Name</label>
+                    <input required id="Fname" type="text" class="form-control" name="Fname"
+                    #Fname = "ngModel" [(ngModel)]='fname'/>
+                </form>
+
+            </div>
+            
 
         </div>
         

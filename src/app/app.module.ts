@@ -5,6 +5,7 @@ import{RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './users/user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { UserComponent } from './users/user.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       {path:'admin', component:AdminComponent},
       {path:'user', component:UserComponent}

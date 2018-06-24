@@ -1,4 +1,5 @@
 import{Component} from '@angular/core';
+import{NgForm} from '@angular/forms';
 
 
 @Component({
@@ -7,5 +8,10 @@ import{Component} from '@angular/core';
 })
 
 export class AdminComponent{
+    fname:string;
+    lname:string;
+    email:string;
+    uname:string;
+    password:string;
     
 }
