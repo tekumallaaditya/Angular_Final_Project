@@ -1,3 +1,98 @@
-<div>
-    <h1>user app works</h1>
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="panel panel-primary col-md-4">
+                    <div class="panel-heading">
+                        <h1>User Registration</h1>            
+                    </div>
+                    <div class="panel-body">
+                        <form #form1 = "ngForm" novalidate>
+                            <div class="form-group">
+                                <label for="Fname">First Name</label>
+                                <input required minlength="3" type="text" id="Fname" required name="Fname" class="form-control"
+                                #Fname = "ngModel" [(ngModel)]= "FnameUser"/>
+                                <div class="alert alert-danger" *ngIf="Fname.touched && !Fname.valid">
+                                    <div *ngIf="Fname.errors.required">First name is required</div>
+                                    <div *ngIf="Fname.errors.minlength">First name should be of atleast 3 char</div>                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Lname">Last Name</label>
+                                <input required minlength="3" type="text" id="Lname" required name="Lname" class="form-control"
+                                #Lname = "ngModel" [(ngModel)]= "LnameUser"/>
+                                <div class="alert alert-danger" *ngIf="Lname.touched && !Lname.valid">
+                                    <div *ngIf="Lname.errors.required">Last name is required</div>
+                                    <div *ngIf="Lname.errors.minlength">Last name should be of atleast 3 char</div>                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" type="text" id="email" required name="email" class="form-control"
+                                #email = "ngModel" [(ngModel)]= "EmailUser"/>
+                                <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                                    <div *ngIf="email.errors.required">Email is required</div>
+                                    <div *ngIf="email.errors.pattern">Email is not valid</div>                                    
+                                </div>                                
+                            </div>
+                            <div class="form-group">
+                                <label for="UnameReg">User Name</label>
+                                <input required minlength="6" type="text" id="UnameReg" required name="UnameReg" class="form-control"
+                                #UnameReg = "ngModel" [(ngModel)]= "UnameUser"/>
+                                <div class="alert alert-danger" *ngIf="UnameReg.touched && !UnameReg.valid">
+                                    <div *ngIf="UnameReg.errors.required">User Name is required</div>
+                                    <div *ngIf="UnameReg.errors.minlength">User Name should be of atleast 6 char</div>                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="PasswordReg">Password</label>
+                                <input required minlength="6" type="Password" id="PasswordReg" required name="PasswordReg" class="form-control"
+                                #PasswordReg = "ngModel" [(ngModel)]= "PassUser"/>
+                                <div class="alert alert-danger" *ngIf="PasswordReg.touched && !PasswordReg.valid">
+                                    <div *ngIf="PasswordReg.errors.required">Password is required</div>
+                                    <div *ngIf="PasswordReg.errors.minlength">Password should be of atleast 6 char</div>                                    
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Register</button>
+
+                        </form>
+
+                    </div>            
+                </div>
+                <div class="panel panel-primary col-md-4 col-sm-offset-4">
+                        <div class="panel-heading">
+                            <h1>User Login</h1>            
+                        </div>
+                        <div class="panel-body">
+                            <form #form2 = "ngForm" novalidate>                                
+                                <div class="form-group">
+                                    <label for="Uname">User Name</label>
+                                    <input required type="text" id="Uname" required name="Uname" class="form-control"
+                                    #Uname = "ngModel" [(ngModel)]= "UnameLogin"/>
+                                    <div class="alert alert-danger" *ngIf="Uname.touched && !Uname.valid">
+                                        <div *ngIf="Uname.errors.required">User Name is required</div>                                                                            
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Password">Password</label>
+                                    <input type="Password" id="Password" required name="Password" class="form-control"
+                                    #Password = "ngModel" [(ngModel)]= "PassLogin"/>
+                                    <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid">
+                                        <div *ngIf="Password.errors.required">Password is required</div>                                                                            
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Login</button>
+    
+                            </form>
+    
+                        </div>            
+                    </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

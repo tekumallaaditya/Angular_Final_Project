@@ -11,10 +11,11 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,     
     FormsModule,
     RouterModule.forRoot([
       {path:'admin', component:AdminComponent},

@@ -11,7 +11,7 @@ export class AdminComponent{
     fname:string;
     lname:string;
     email:string;
-    uname:string;
-    password:string;
+    UnameAdmin:string;
+    passAdmin:string;
     
 }

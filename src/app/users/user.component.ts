@@ -6,5 +6,12 @@ import{Component} from '@angular/core';
 })
 
 export class UserComponent{
+    FnameUser:string;
+    LnameUser:string;
+    EmailUser:string;
+    UnameUser:string;
+    PassUser:string;
+    UnameLogin:string;
+    PassLogin:string;
     
 }

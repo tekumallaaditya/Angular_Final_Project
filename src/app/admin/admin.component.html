@@ -3,16 +3,32 @@
     <head>
     </head>
     <body>
-        <div class="panel panel-primary">
+        <div class="panel panel-primary col-md-4 col-sm-offset-4">
             <div class="panel-heading">
                 <h1>Admin Login</h1>
             </div>
             <div class="panel-body">
-                <form #form = "ngForm" novalidate>
-                    <label for="Fname">First Name</label>
-                    <input required id="Fname" type="text" class="form-control" name="Fname"
-                    #Fname = "ngModel" [(ngModel)]='fname'/>
-                </form>
+                    <form #form = "ngForm" novalidate>
+                        <div class="form-group">
+                           <label for="Uname">User Name</label>
+                           <input required type="text" id="Uname" required name="Uname" class="form-control"
+                           #Uname = "ngModel" [(ngModel)]= "UnameAdmin"/>
+                           <div class="alert alert-danger" *ngIf= "Uname.touched && !Uname.valid">
+                               <div *ngIf = "Uname.errors.required">User Name is required</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input required type="password" id="password" required name="password" class="form-control"
+                            #password = "ngModel" [(ngModel)]= "passAdmin"/>
+                            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                                <div *ngIf="password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">SUBMIT</button>
+                            
+                            
+                    </form>
 
             </div>
             
