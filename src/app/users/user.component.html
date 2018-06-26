@@ -11,7 +11,7 @@
                         <h1>User Registration</h1>            
                     </div>
                     <div class="panel-body">
-                        <form #form1 = "ngForm" novalidate>
+                        <form #form1 = "ngForm" novalidate (ngSubmit)="OnSubmit(form1)">
                             <div class="form-group">
                                 <label for="Fname">First Name</label>
                                 <input required minlength="3" type="text" id="Fname" required name="Fname" class="form-control"
@@ -57,7 +57,7 @@
                                     <div *ngIf="PasswordReg.errors.minlength">Password should be of atleast 6 char</div>                                    
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">Register</button>
+                            <button class="btn btn-primary" type="Submit" [disabled]="!form1.valid">Register</button>
 
                         </form>
 
@@ -85,7 +85,7 @@
                                         <div *ngIf="Password.errors.required">Password is required</div>                                                                            
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Login</button>
+                                <button class="btn btn-primary" type="button">Login</button>
     
                             </form>
     
