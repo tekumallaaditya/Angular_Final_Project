@@ -5,3 +5,8 @@ export interface User{
     Uname:string,
     Password:string
 }
+
+export interface UserLogin{
+    Uname:string,
+    Password:string
+}

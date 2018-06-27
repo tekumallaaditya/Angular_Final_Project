@@ -12,6 +12,11 @@
             "element",
             "app",
             "kebab-case"
-        ]
+        ],
+        "import-blacklist": [
+            true,
+            "rxjs",
+            "rxjs/Rx"
+          ]
     }
 }

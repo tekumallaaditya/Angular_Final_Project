@@ -68,7 +68,7 @@
                             <h1>User Login</h1>            
                         </div>
                         <div class="panel-body">
-                            <form #form2 = "ngForm" novalidate>                                
+                            <form #form2 = "ngForm" novalidate (ngSubmit)="OnLogin(form2)">                                
                                 <div class="form-group">
                                     <label for="Uname">User Name</label>
                                     <input required type="text" id="Uname" required name="Uname" class="form-control"
@@ -85,7 +85,7 @@
                                         <div *ngIf="Password.errors.required">Password is required</div>                                                                            
                                     </div>
                                 </div>
-                                <button class="btn btn-primary" type="button">Login</button>
+                                <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Login</button>
     
                             </form>
     

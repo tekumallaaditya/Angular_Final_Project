@@ -4,7 +4,7 @@ import {Http, Response} from '@angular/http';
 //import { observable } from 'rxjs';
 //import 'rxjs/add/operator/map';
 //import 'rxjs/add/operator/catch';
-import { User } from './users.model';
+import { User, UserLogin } from './users.model';
 
 
 @Injectable()
@@ -12,6 +12,7 @@ import { User } from './users.model';
 export class UserService{
 
     private _listUrl = "http://localhost:5000/"
+    private _listLoginUrl = "http://localhost:5000/user"
     constructor( private http:Http){}
 
     registerUser(user){
@@ -25,5 +26,12 @@ export class UserService{
         }
         return this.http.post(this._listUrl, body);
 
+    }
+    LoginUser(user){
+        const body: UserLogin = {
+            Uname: user.Uname,
+            Password: user.Password
+        }
+        return this.http.post(this._listLoginUrl, body);
     }
 }
