@@ -10,3 +10,20 @@ export interface UserLogin{
     Uname:string,
     Password:string
 }
+
+export interface GetUserInfo{
+    Uname: {
+    ContactList: any,
+    Email:string,
+    Fname:string,
+    Lname:string,
+    id:number
+}    
+}
+export interface extractUser{
+    ContactList: any,
+    Email:string,
+    Fname:string,
+    Lname:string,
+    id:number
+}

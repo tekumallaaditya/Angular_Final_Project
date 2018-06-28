@@ -10,12 +10,14 @@ import { UserComponent } from './users/user.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './users/user.services';
 import {ToastrModule} from 'ngx-toastr';
+import { UserListComponent } from './users/userLogin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     UserComponent,
+    UserListComponent
     
   ],
   imports: [
@@ -31,7 +33,8 @@ import {ToastrModule} from 'ngx-toastr';
     }),
     RouterModule.forRoot([
       {path:'admin', component:AdminComponent},
-      {path:'user', component:UserComponent}
+      {path:'user', component:UserComponent},
+      {path:'contacts', component:UserListComponent}
       
     ])
   ],

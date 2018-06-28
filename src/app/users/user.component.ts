@@ -2,7 +2,8 @@ import{Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from './user.services';
 import{ToastrService, ToastrModule} from 'ngx-toastr';
-import{Observable, of} from 'rxjs';
+import {Router} from "@angular/router";
+import { GetUserInfo } from './users.model';
 
 
 
@@ -22,7 +23,9 @@ export class UserComponent{
     erroress:any;
     errorMessage:string;
 
-    constructor(private userservice:UserService, public toaster:ToastrService){}
+    GetUserInfo: any;
+
+    constructor(private userservice:UserService, public toaster:ToastrService, private router: Router){}
 
 
     OnSubmit(form: NgForm){
@@ -49,12 +52,16 @@ export class UserComponent{
 
     }
     OnLogin(form: NgForm){
-        console.log('inside login form');
+        console.log(form.value.Uname);
+        this.UnameUser = form.value.Uname;
         this.userservice.LoginUser(form.value).subscribe((data) => {
             if (data.status == 201)
             {
                 form.reset();
                 this.toaster.success('Login Successfull');
+                //this.GetUserInfo = this.userservice.PullUserInfo(this.UnameUser);
+                //console.log(this.userservice.PullUserInfo(this.UnameUser), 'this.GetUserInfo')
+                this.router.navigate(['/contacts',{Uname: this.UnameUser}]);
                 //this.toaster.error('failed');
                 console.log(data.status);
                 console.log(data.statusText);
@@ -68,5 +75,6 @@ export class UserComponent{
 
         });
     }
+    
     
 }
