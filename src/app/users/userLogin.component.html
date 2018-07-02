@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="./src/app/app.component.css">
 
     </head>
     <body>
-        <h1>You are logged in</h1>
-        <h2>{{extractInfo['FirstName']}}</h2>
-        <h2>{{extractInfo['ContactList']}}</h2>
-        <h2>{{extractInfo['Email']}}</h2>
-        <h2>{{extractInfo['LastName']}}</h2>
-        <h2>{{extractInfo['id']}}</h2>
+        <h1 style="text-align: center">Hello {{extractInfo['FirstName']}}, your contacts are</h1><hr/>
+        <div class="container">
+            <div class="col-md-3" style="border-right: 1px solid #333;">
+                <h2>Personal login info</h2>
+                <h4>User Name: {{Uname}}</h4>
+                <h4>first Name: {{extractInfo['FirstName']}}</h4>
+                <h4>Last Name: {{extractInfo['LastName']}} </h4>
+                <h4>Email: {{extractInfo['Email']}}</h4>
+            </div>
+            <div class="container">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contact Name</th>
+                                <th>Contact Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{extractInfo['ContactList'] | sortinfo}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+        
+        
+
+        
+    
     </body>
 </html>

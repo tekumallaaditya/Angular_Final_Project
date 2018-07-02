@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit{
     UserInfo :GetUserInfo[];
     extractInfo:extractUser;
     errorMessage:string;
+    ContactListLength:number;
 
     constructor(private route: ActivatedRoute, private userSerice: UserService) {}
 
@@ -28,8 +29,11 @@ export class UserListComponent implements OnInit{
             for (let each of data){
                 for (let key in each){
                     if (key == this.Uname){
-                        console.log('insode condition', key, each[key]);
+                        console.log('inside condition', key, each[key]);
                         this.extractInfo = each[key]; 
+                        var x = new Array();
+                        x = this.extractInfo.ContactList.split(',');
+                        this.ContactListLength = x.length;
                         console.log(this.extractInfo)
                     }
                 }
@@ -39,11 +43,4 @@ export class UserListComponent implements OnInit{
         console.log(this.route.snapshot.paramMap.get('Uname'), 'outside subscribe',this.extractInfo);
         
     }
-
-
-
-
-
-
-
 }

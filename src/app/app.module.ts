@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './users/user.services';
 import {ToastrModule} from 'ngx-toastr';
 import { UserListComponent } from './users/userLogin.component';
+import { ContactListPipe } from './users/sort.contacts';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     UserComponent,
-    UserListComponent
+    UserListComponent,
+    ContactListPipe
     
   ],
   imports: [
