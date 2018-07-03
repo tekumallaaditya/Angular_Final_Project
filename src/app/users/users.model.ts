@@ -33,3 +33,8 @@ export interface AddContact{
     ContactNumber:string,
     Uname:string
 }
+
+export interface DelContact{
+    ContactName:string,
+    Uname:string
+}

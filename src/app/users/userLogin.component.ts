@@ -69,4 +69,20 @@ export class UserListComponent implements OnInit{
         });
 
     }
+    delContact(form: NgForm){
+        console.log(form.value)
+        this.Delcontactname = form.value.delcontactname
+        this.userSerice.DelUserContact(form.value, this.Uname).subscribe((data) =>{
+            if (data.status == 201)
+            {
+                this.toaster.success('Selected Contact Deleted. Please refresh the page')
+                console.log('Deleting contact successfull', data.status)
+            }
+            else
+            {
+                this.toaster.error('Failed to delete the contact')
+                console.log('deleting contact failed', data.status)
+            }
+        })
+    }
 }

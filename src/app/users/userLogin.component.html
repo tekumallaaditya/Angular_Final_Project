@@ -74,7 +74,7 @@
                         <h2>Delete Contact</h2>
                     </div>
                     <div class="panel-body">
-                        <form #deletecontact= "ngForm" novalidate>
+                        <form #deletecontact= "ngForm" novalidate (ngSubmit)= "delContact(deletecontact)">
                             <div class="form-group">
                                 <label for="delcontactname">Contact Name</label>
                                 <input required type="text" class="form-control" name="delcontactname"

@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import{Observable} from 'rxjs/Observable';  
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { User, UserLogin, GetUserInfo, AddContact } from './users.model';
+import { User, UserLogin, GetUserInfo, AddContact, DelContact } from './users.model';
 
 
 @Injectable()
@@ -45,6 +45,13 @@ export class UserService{
             Uname: user
         }
         return this.http.post(this._listUrl+'add', body)
+    }
+    DelUserContact(contact, user){
+        const body : DelContact = {
+            ContactName: contact.delcontactname,
+            Uname: user
+        }
+        return this.http.post(this._listUrl+'del', body)
     }
     PullUserInfo():Observable<GetUserInfo[]>{
         console.log(this.http.get(this._listUrl))
