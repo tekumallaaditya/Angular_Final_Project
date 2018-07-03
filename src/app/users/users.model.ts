@@ -27,3 +27,9 @@ export interface extractUser{
     Lname:string,
     id:number
 }
+
+export interface AddContact{
+    ContactName:string,
+    ContactNumber:string,
+    Uname:string
+}

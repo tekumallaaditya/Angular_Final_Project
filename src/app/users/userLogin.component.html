@@ -5,16 +5,22 @@
 
     </head>
     <body>
-        <h1 style="text-align: center">Hello {{extractInfo['FirstName']}}, your contacts are</h1><hr/>
+        <h1 style="text-align: center">Hello {{extractInfo['FirstName']}}!!!</h1><hr/>
         <div class="container">
             <div class="col-md-3" style="border-right: 1px solid #333;">
-                <h2>Personal login info</h2>
-                <h4>User Name: {{Uname}}</h4>
-                <h4>first Name: {{extractInfo['FirstName']}}</h4>
-                <h4>Last Name: {{extractInfo['LastName']}} </h4>
-                <h4>Email: {{extractInfo['Email']}}</h4>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Personal info</h2>
+                    </div>
+                    <div class="panel-body">
+                        <h4>User Name: {{Uname}}</h4>
+                        <h4>first Name: {{extractInfo['FirstName']}}</h4>
+                        <h4>Last Name: {{extractInfo['LastName']}} </h4>
+                        <h4>Email: {{extractInfo['Email']}}</h4>
+                    </div>
+                </div>                
             </div>
-            <div class="container">
+            <div class="container col-md-6">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -24,8 +30,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{extractInfo['ContactList'] | sortinfo}}</td>
+                            <tr *ngFor="let each of ContactListArray">
+                                <td>{{extractInfo['ContactList'] | sortinfo:each:0}}</td>
+                                <td>{{extractInfo['ContactList'] | sortinfo:each:1}}</td>
                             </tr>
                         </tbody>
 
@@ -34,6 +41,56 @@
                 </div>
 
             </div>
+            <div  class="col-md-3" style="border-left: 1px solid #333;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Add Contact</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form #addcontact = "ngForm" novalidate (ngSubmit)= "AddContact(addcontact)">
+                            <div class="form-group">
+                                <label for="contactname">Contact Name</label>
+                                <input required type="text" class="form-control" name="contactname"
+                                #contactname = "ngModel" [(ngModel)]= "ContactName"/>
+                                <div class="alert alert-danger" *ngIf="contactname.touched && !contactname.valid">
+                                    <div *ngIf="contactname.errors.required">Contact Name is required</div>                                                                            
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactnumber">Contact Number</label>
+                                <input required type="text" class="form-control" name="contactnumber"
+                                #contactnumber = "ngModel" [(ngModel)]= "ContactNumber"/>
+                                <div class="alert alert-danger" *ngIf="contactnumber.touched && !contactnumber.valid">
+                                    <div *ngIf="contactnumber.errors.required">Contact Number is required</div>                                                                            
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled]= "!addcontact.valid">Add</button>
+                        </form>                       
+
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Delete Contact</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form #deletecontact= "ngForm" novalidate>
+                            <div class="form-group">
+                                <label for="delcontactname">Contact Name</label>
+                                <input required type="text" class="form-control" name="delcontactname"
+                                #delcontactname = "ngModel" [(ngModel)] = "Delcontactname">
+                                <div class="alert alert-danger" *ngIf="delcontactname.touched && !delcontactname.valid">
+                                    <div *ngIf="delcontactname.errors.required">Contact Name is required</div>                                                                            
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled] = "!deletecontact.valid">Delete</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>            
         </div>
         
         
