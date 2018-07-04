@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>You are in Admin List page</h1>
+        <div class="container">
+            <div class="col-md-3" style="border-right: 1px solid #333;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Personal info</h2>
+                    </div>
+                    <div class="panel-body">
+                        <h4>User Name: {{Uname}}</h4>
+                        <h4>first Name: {{extractInfo['FirstName']}}</h4>
+                        <h4>Last Name: {{extractInfo['LastName']}} </h4>
+                        <h4>Email: {{extractInfo['Email']}}</h4>
+                        <button class="btn btn-primary" type="button" (click) = "LogoutAdmin()">Logout</button>
+                    </div>
+                </div>                
+            </div>
+
+        </div>
+
+
+
+
+
+
+        
+    </body>
+</html>

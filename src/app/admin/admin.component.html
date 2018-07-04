@@ -8,7 +8,7 @@
                 <h1>Admin Login</h1>
             </div>
             <div class="panel-body">
-                    <form #form = "ngForm" novalidate>
+                    <form #form = "ngForm" novalidate (ngSubmit) = "AdminLogin(form)" >
                         <div class="form-group">
                            <label for="Uname">User Name</label>
                            <input required type="text" id="Uname" required name="Uname" class="form-control"
@@ -25,7 +25,8 @@
                                 <div *ngIf="password.errors.required">Password is required</div>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">SUBMIT</button>
+                        <button class="btn btn-primary" type="submit" [disabled]= "!form.valid">SUBMIT</button>
+                        <button class="col-sm-offset-6 btn btn-primary" type="button" (click)="Userpage()">User Login</button>
                             
                             
                     </form>

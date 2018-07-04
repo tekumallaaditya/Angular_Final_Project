@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit{
     ContactListLength:number;
     ContactListArray:number[] = [];
 
-    constructor(private route: ActivatedRoute, private userSerice: UserService, public toaster:ToastrService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private userSerice: UserService, public toaster:ToastrService) {}
 
     ngOnInit(): void {
         this.Uname = this.route.snapshot.paramMap.get('Uname');
@@ -84,5 +84,10 @@ export class UserListComponent implements OnInit{
                 console.log('deleting contact failed', data.status)
             }
         })
+    }
+    logout(){
+        this.toaster.success('Log out successfull');
+        this.router.navigate(['/user']);
+
     }
 }

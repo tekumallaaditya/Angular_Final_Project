@@ -3,7 +3,7 @@
     <head>
 
     </head>
-    <body>
+    <body>        
         <div class="container">
             <div class="row">
                 <div class="panel panel-primary col-md-4">
@@ -86,12 +86,13 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Login</button>
+                                <button class="btn btn-primary col-sm-offset-5" type="button" (click)="GOtoAdmin()">Admin Login</button>
     
                             </form>
     
                         </div>            
-                    </div>
-            </div>
+                    </div>                    
+            </div>            
         </div>
         
     </body>

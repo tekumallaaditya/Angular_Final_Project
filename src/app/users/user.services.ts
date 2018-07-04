@@ -14,10 +14,16 @@ export class UserService{
     Fname:string;
     Lname:string;
     id:number;
-
+    
+    private IsUserLoggedIn;
     private _listUrl = "http://localhost:5000/"
     private _listLoginUrl = "http://localhost:5000/user"
-    constructor( private http:Http){}
+    constructor( private http:Http){
+        this.IsUserLoggedIn = false;
+    }
+    
+    setUserLoggedIn(){ this.IsUserLoggedIn = true;}
+    getUserLoggedIn(){return this.IsUserLoggedIn;}
 
     registerUser(user){
         const body: User = {

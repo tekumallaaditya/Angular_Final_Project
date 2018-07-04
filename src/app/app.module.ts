@@ -12,11 +12,15 @@ import { UserService } from './users/user.services';
 import {ToastrModule} from 'ngx-toastr';
 import { UserListComponent } from './users/userLogin.component';
 import { ContactListPipe } from './users/sort.contacts';
+import { AuthGuard } from './users/auth.guard';
+import { AdminServices } from './admin/admin.services';
+import { AdminLoginComponent } from './admin/adminLogin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
+    AdminLoginComponent,
     UserComponent,
     UserListComponent,
     ContactListPipe
@@ -34,13 +38,16 @@ import { ContactListPipe } from './users/sort.contacts';
       onActivateTick:true
     }),
     RouterModule.forRoot([
+      {path:'', redirectTo: '/user', pathMatch: 'full'},
+      //{path:'/', redirectTo: '/user', pathMatch: 'full'},
       {path:'admin', component:AdminComponent},
+      {path:'adminlist', component:AdminLoginComponent},
       {path:'user', component:UserComponent},
-      {path:'contacts', component:UserListComponent}
+      {path:'contacts',canActivate: [AuthGuard], component:UserListComponent}
       
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, AuthGuard, AdminServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

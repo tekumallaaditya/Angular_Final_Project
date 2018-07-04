@@ -57,6 +57,7 @@ export class UserComponent{
         this.userservice.LoginUser(form.value).subscribe((data) => {
             if (data.status == 201)
             {
+                this.userservice.setUserLoggedIn();
                 form.reset();
                 this.toaster.success('Login Successfull');
                 //this.GetUserInfo = this.userservice.PullUserInfo(this.UnameUser);
@@ -74,6 +75,10 @@ export class UserComponent{
             }
 
         });
+    }
+
+    GOtoAdmin(){
+        this.router.navigate(['/admin']);
     }
 
     
