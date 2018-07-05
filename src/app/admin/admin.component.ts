@@ -24,20 +24,20 @@ export class AdminComponent{
 
     }
     AdminLogin(form: NgForm){
-        console.log(form.value);
+        console.log(form.value.Uname);
         this.UnameAdmin = form.value.Uname;
+        console.log(this.UnameAdmin)
         this.admin.login(form.value).subscribe((data) =>{
             if (data.status == 201)
             {
                 this.admin.setUserLoggedIn();
-                form.reset();
+                console.log(this.UnameAdmin);                
                 this.toaster.success('Login Successfull');
                 //this.GetUserInfo = this.userservice.PullUserInfo(this.UnameUser);
                 //console.log(this.userservice.PullUserInfo(this.UnameUser), 'this.GetUserInfo')
                 this.router.navigate(['/adminlist',{Uname: this.UnameAdmin}]);
-                //this.toaster.error('failed');
-                console.log(data.status);
-                console.log(data.statusText);
+                //form.reset();               
+                
             }
             else if( data.status == 293)
             {

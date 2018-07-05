@@ -15,6 +15,7 @@ import { ContactListPipe } from './users/sort.contacts';
 import { AuthGuard } from './users/auth.guard';
 import { AdminServices } from './admin/admin.services';
 import { AdminLoginComponent } from './admin/adminLogin.component';
+import { AuthGuardAdmin } from './admin/authAdmin.guard';
 
 @NgModule({
   declarations: [
@@ -41,13 +42,13 @@ import { AdminLoginComponent } from './admin/adminLogin.component';
       {path:'', redirectTo: '/user', pathMatch: 'full'},
       //{path:'/', redirectTo: '/user', pathMatch: 'full'},
       {path:'admin', component:AdminComponent},
-      {path:'adminlist', component:AdminLoginComponent},
+      {path:'adminlist',canActivate: [AuthGuardAdmin], component:AdminLoginComponent},
       {path:'user', component:UserComponent},
       {path:'contacts',canActivate: [AuthGuard], component:UserListComponent}
       
     ])
   ],
-  providers: [UserService, AuthGuard, AdminServices],
+  providers: [UserService, AuthGuard, AdminServices, AuthGuardAdmin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

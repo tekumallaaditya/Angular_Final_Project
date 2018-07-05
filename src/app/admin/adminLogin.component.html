@@ -2,7 +2,10 @@
 <html>
     <head></head>
     <body>
-        <h1>You are in Admin List page</h1>
+        <div class="container">
+            <h1>Hello {{Aname}}, you are logged in as  Admin</h1>
+        </div>
+        <hr>
         <div class="container">
             <div class="col-md-3" style="border-right: 1px solid #333;">
                 <div class="panel panel-primary">
@@ -10,13 +13,136 @@
                         <h2>Personal info</h2>
                     </div>
                     <div class="panel-body">
-                        <h4>User Name: {{Uname}}</h4>
-                        <h4>first Name: {{extractInfo['FirstName']}}</h4>
-                        <h4>Last Name: {{extractInfo['LastName']}} </h4>
-                        <h4>Email: {{extractInfo['Email']}}</h4>
+                        <h4>User Name: {{AdminExt[0].Unameeach}}</h4>
+                        <h4>Email: {{AdminExt[0].value.Email}}</h4>
+                        
+                        
                         <button class="btn btn-primary" type="button" (click) = "LogoutAdmin()">Logout</button>
                     </div>
                 </div>                
+            </div>
+            <div class="col-md-6" style="border-right: 1px solid #333;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>List of Users</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>User Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor= "let each of AdminExt">
+                                        <td>{{each.value.id}}</td>
+                                        <td>{{each.value.FirstName}}</td>
+                                        <td>{{each.value.LastName}}</td>
+                                        <td>{{each.value.Email}}</td>
+                                        <td>{{each.Unameeach}}</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Create new user</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form #adminform = "ngForm" novalidate (ngSubmit)= "createuser(adminform)">
+                            <div class="form-group">
+                                <div class="form-group">
+                                        <label for="Fname">First Name</label>
+                                        <input required minlength="3" type="text" id="Fname" required name="Fname" class="form-control"
+                                        #Fname = "ngModel" [(ngModel)]= "FnameUser"/>
+                                        <div class="alert alert-danger" *ngIf="Fname.touched && !Fname.valid">
+                                            <div *ngIf="Fname.errors.required">First name is required</div>
+                                            <div *ngIf="Fname.errors.minlength">First name should be of atleast 3 char</div>                                    
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Lname">Last Name</label>
+                                        <input required minlength="3" type="text" id="Lname" required name="Lname" class="form-control"
+                                        #Lname = "ngModel" [(ngModel)]= "LnameUser"/>
+                                        <div class="alert alert-danger" *ngIf="Lname.touched && !Lname.valid">
+                                            <div *ngIf="Lname.errors.required">Last name is required</div>
+                                            <div *ngIf="Lname.errors.minlength">Last name should be of atleast 3 char</div>                                    
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input required pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" type="text" id="email" required name="email" class="form-control"
+                                        #email = "ngModel" [(ngModel)]= "EmailUser"/>
+                                        <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                                            <div *ngIf="email.errors.required">Email is required</div>
+                                            <div *ngIf="email.errors.pattern">Email is not valid</div>                                    
+                                        </div>                                
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="UnameReg">User Name</label>
+                                        <input required minlength="6" type="text" id="UnameReg" required name="UnameReg" class="form-control"
+                                        #UnameReg = "ngModel" [(ngModel)]= "UnameUser"/>
+                                        <div class="alert alert-danger" *ngIf="UnameReg.touched && !UnameReg.valid">
+                                            <div *ngIf="UnameReg.errors.required">User Name is required</div>
+                                            <div *ngIf="UnameReg.errors.minlength">User Name should be of atleast 6 char</div>                                    
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="PasswordReg">Password</label>
+                                        <input required minlength="6" type="Password" id="PasswordReg" required name="PasswordReg" class="form-control"
+                                        #PasswordReg = "ngModel" [(ngModel)]= "PassUser"/>
+                                        <div class="alert alert-danger" *ngIf="PasswordReg.touched && !PasswordReg.valid">
+                                            <div *ngIf="PasswordReg.errors.required">Password is required</div>
+                                            <div *ngIf="PasswordReg.errors.minlength">Password should be of atleast 6 char</div>                                    
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" type="Submit" [disabled]="!adminform.valid">Create</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Delete a User</h2>
+                    </div>
+                    <div class="panel-body">
+                        <form #userdel= "ngForm" novalidate (ngSubmit)= "Deluser(userdel)">
+                            <div class="form-group">
+                                <label for="Unamedel">User Name</label>
+                                <input required minlength="6" type="text" id="Unamedel" required name="Unamedel" class="form-control"
+                                #Unamedel = "ngModel" [(ngModel)]= "UnameUserdel"/>
+                                <div class="alert alert-danger" *ngIf="Unamedel.touched && !Unamedel.valid">
+                                    <div *ngIf="Unamedel.errors.required">User Name is required</div>
+                                    <div *ngIf="Unamedel.errors.minlength">User Name should be of atleast 6 char</div>                                    
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit" [disabled]="!userdel.valid">Delete</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
         </div>
